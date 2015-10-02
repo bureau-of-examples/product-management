@@ -4,37 +4,51 @@
     <meta charset="UTF-8">
     <title>Acme Product Management</title>
 
+    <link rel="stylesheet" href="css/bootstrap.css">
+    <link rel="stylesheet" href="css/bootstrap-theme.css">
+    <link rel="stylesheet" href="css/app.css">
+
     <script src="js/angular.js" ></script>
     <script src="app/app.js" ></script>
     <script src="app/products/productListCtrl.js" ></script>
 </head>
 <body data-ng-app="productManagement">
 
-    <table data-ng-controller="productListCtrl as vm">
-        <thead>
-            <tr>
-                <td><button type="button" data-ng-click="vm.toggleImage()">
-                    {{vm.showImage ? "Hide Image" : "Show Image"}}
-                </button></td>
-                <td>Product</td>
-                <td>Code</td>
-                <td>Available</td>
-                <td>Price</td>
-            </tr>
-        </thead>
-        <tbody>
-            <tr data-ng-repeat="product in vm.products">
-                <td>
-                    <img data-ng-if="vm.showImage" data-ng-src="images/{{product.imageUrl}}" title="{{product.productName}}">
-                </td>
-                <td>{{product.productName}}</td>
-                <td>{{product.productCode}}</td>
-                <td>{{product.releaseDate}}</td>
-                <td>{{product.price | currency}}</td>
-            </tr>
+    <div class="panel panel-primary">
+        <div class="panel-heading" style="font-size:large">
+            Product List
+        </div>
+        <div class="panel-body">
+            <table class="table" data-ng-controller="productListCtrl as vm">
+                <thead>
+                <tr>
+                    <td style="width: 205px">
+                        <button class="btn btn-primary" type="button" data-ng-click="vm.toggleImage()">
+                        {{vm.showImage ? "Hide Image" : "Show Image"}}
+                        </button>
+                    </td>
+                    <td>Product</td>
+                    <td>Code</td>
+                    <td>Available</td>
+                    <td>Price</td>
+                </tr>
+                </thead>
+                <tbody>
+                <tr data-ng-repeat="product in vm.products">
+                    <td>
+                        <img style="width:200px" data-ng-if="vm.showImage" data-ng-src="images/{{product.imageUrl}}" title="{{product.productName}}">
+                    </td>
+                    <td>{{product.productName}}</td>
+                    <td>{{product.productCode}}</td>
+                    <td>{{product.releaseDate}}</td>
+                    <td>{{product.price | currency}}</td>
+                </tr>
 
-        </tbody>
+                </tbody>
 
-    </table>
+            </table>
+        </div>
+    </div>
+
 </body>
 </html>
