@@ -6,38 +6,16 @@
 
     <script src="js/angular.js" ></script>
     <script src="app/app.js" ></script>
+    <script src="app/products/productListCtrl.js" ></script>
 </head>
 <body data-ng-app="productManagement">
 
-    <table data-ng-init='products = [
-        {
-            "productId":1,
-            "productName":"Leaf Rake",
-            "productCode":"GDN001",
-            "releaseDate":"2009-10-15",
-            "description":"A great leaf rake.",
-            "cost":9.00,
-            "price":19.95,
-            "category":"garden",
-            "tags":["tag1`","tag2"],
-            "imageUrl":"product/leafrake.jpg"
-        },
-        {
-            "productId":5,
-            "productName":"Hammer",
-            "productCode":"Tool",
-            "releaseDate":"2012-10-30",
-            "description":"A powerful hammer.",
-            "cost":1.00,
-            "price":11.95,
-            "category":"tool",
-            "tags":["tag1`","tag2"],
-            "imageUrl":"product/hammer.jpg"
-        },
-    ]'>
+    <table data-ng-controller="productListCtrl as vm">
         <thead>
             <tr>
-                <td>Image</td>
+                <td><button type="button" data-ng-click="vm.toggleImage()">
+                    {{vm.showImage ? "Hide Image" : "Show Image"}}
+                </button></td>
                 <td>Product</td>
                 <td>Code</td>
                 <td>Available</td>
@@ -45,9 +23,9 @@
             </tr>
         </thead>
         <tbody>
-            <tr data-ng-repeat="product in products">
+            <tr data-ng-repeat="product in vm.products">
                 <td>
-                    <img data-ng-src="images/{{product.imageUrl}}" title="{{product.productName}}">
+                    <img data-ng-if="vm.showImage" data-ng-src="images/{{product.imageUrl}}" title="{{product.productName}}">
                 </td>
                 <td>{{product.productName}}</td>
                 <td>{{product.productCode}}</td>
