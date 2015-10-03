@@ -24,6 +24,12 @@
             templateUrl:"app/products/productEditView.html",
             controller: "productEditCtrl as vm"
         });
+
+        $stateProvider.state("productDetail", {
+            url: "/products/:productId",
+            templateUrl:"app/products/productDetailView.html",
+            controller: "productDetailCtrl as vm"
+        });
     }
 
 }());

@@ -16,6 +16,7 @@
                 <td>Code</td>
                 <td>Available</td>
                 <td>Price</td>
+                <td></td>
             </tr>
             </thead>
             <tbody>
@@ -23,10 +24,13 @@
                 <td>
                     <img style="width:200px" data-ng-if="vm.showImage" data-ng-src="images/{{product.imageUrl}}" title="{{product.productName}}">
                 </td>
-                <td>{{product.productName}}</td>
+                <td><a data-ui-sref="productDetail({productId:product.productId})">{{product.productName}}</a></td>
                 <td>{{product.productCode}}</td>
                 <td>{{product.releaseDate}}</td>
                 <td>{{product.price | currency}}</td>
+                <td>
+                    <a class="btn btn-primary" data-ui-sref="productEdit({productId:product.productId})">Edit</a>
+                </td>
             </tr>
 
             </tbody>
