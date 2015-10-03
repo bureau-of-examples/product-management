@@ -8,21 +8,44 @@
     <link rel="stylesheet" href="css/bootstrap-theme.css">
     <link rel="stylesheet" href="css/app.css">
 
-    <script src="js/angular.js" ></script>
-    <script src="js/angular-resource.js" ></script>
-    <script src="js/angular-mocks.js" ></script>
-    <script src="js/angular-ui-router.js" ></script>
+    <script src="js/jquery.js" ></script>
+    <script src="js/angular.js"></script>
+    <script src="js/angular-resource.js"></script>
+    <script src="js/angular-mocks.js"></script>
+    <script src="js/angular-ui-router.js"></script>
 
-    <script src="app/app.js" ></script>
+    <script src="js/bootstrap.js" ></script>
 
-    <script src="common/services/common.services.js" ></script>
-    <script src="common/services/productResource.js" ></script>
-    <script src="common/services/productResourceMock.js" ></script>
-    <script src="app/products/productListCtrl.js" ></script>
+    <script src="app/app.js"></script>
+
+    <script src="common/services/common.services.js"></script>
+    <script src="common/services/productResource.js"></script>
+    <script src="common/services/productResourceMock.js"></script>
+    <script src="app/products/productListCtrl.js"></script>
 </head>
 <body data-ng-app="productManagement">
-    <div class="container">
-        <div data-ui-view></div>
-    </div>
+
+<nav class="navbar navbar-inverse">
+  <div class="container">
+      <a class="navbar-brand" data-ui-sref="home">Acme Product Management</a>
+      <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+          </button>
+      </div>
+      <div class="navbar-collapse collapse">
+          <ul class="nav navbar-nav">
+              <li><a data-ui-sref="productList">Product List</a></li>
+              <li><a data-ui-sref="productEdit({productId:0})"><i class="glyphicon glyphicon-plus"></i>Add Product</a></li>
+          </ul>
+      </div>
+  </div>
+</nav>
+<div class="container">
+    <div data-ui-view></div>
+</div>
 </body>
 </html>

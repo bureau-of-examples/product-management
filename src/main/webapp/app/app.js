@@ -6,12 +6,23 @@
 
     function configureStateProvider($stateProvider, $urlRouterProvider){
 
-        $urlRouterProvider.otherwise("/products");
+        $urlRouterProvider.otherwise("/");
+
+        $stateProvider.state("home", {
+            url: "/",
+            templateUrl: "app/welcomeView.html"
+        });
 
         $stateProvider.state("productList", {
             url: "/products",
             templateUrl:"app/products/productListView.html",
             controller: "productListCtrl as vm"
+        });
+
+        $stateProvider.state("productEdit", {
+            url: "/products/edit/:productId",
+            templateUrl:"app/products/productEditView.html",
+            controller: "productEditCtrl as vm"
         });
     }
 
