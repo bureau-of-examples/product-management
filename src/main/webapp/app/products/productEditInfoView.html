@@ -1,20 +1,31 @@
 
-<form name="productForm" class="form-horizontal">
+<form name="productForm" novalidate class="form-horizontal">
 
     <fieldset>
         <legend>Basic Product Information</legend>
 
-        <div class="form-group">
+        <div    class="form-group"
+                data-ng-class='{"has-error":productForm.inputProductName.$invalid}'>
             <label for="inputProductName" class="col-md-2 control-label">Product Name</label>
             <div class="col-md-4">
-                <input id="inputProductName" type="text" placeholder="Product Name" data-ng-model="vm.product.productName" class="form-control">
+                <input id="inputProductName" type="text" placeholder="Product Name (required)"
+                       data-ng-model="vm.product.productName"
+                       required
+                       name="inputProductName"
+                       class="form-control">
             </div>
         </div>
 
-        <div class="form-group">
+        <div    class="form-group"
+                data-ng-class='{"has-error":productForm.inputProductCode.$invalid}'>
             <label for="inputProductCode" class="col-md-2 control-label">Product Code</label>
             <div class="col-md-4">
-                <input id="inputProductCode" type="text" data-ng-model="vm.product.productCode" data-ui-mask="AAA-****" class="form-control"/>
+                <input id="inputProductCode" type="text"
+                       data-ng-model="vm.product.productCode"
+                       data-ui-mask="AAA-**** (required)"
+                       required
+                       name="inputProductCode"
+                       class="form-control"/>
             </div>
         </div>
 
