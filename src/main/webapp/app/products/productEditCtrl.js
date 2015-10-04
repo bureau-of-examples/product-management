@@ -1,9 +1,9 @@
 (function(){
     "use strict";
 
-    angular.module("productManagement").controller("productEditCtrl", ["product", productEditCtrl]);
+    angular.module("productManagement").controller("productEditCtrl", ["product", "$state", "productResource", productEditCtrl]);
 
-    function productEditCtrl(product){
+    function productEditCtrl(product, $state, productResource){
         var vm = this;
 
         vm.product = product;
@@ -22,6 +22,14 @@
 
             vm.isOpen = !vm.isOpen;
         };
+
+        vm.submit = function() {
+            productResource.save(vm.product);
+        };
+
+        vm.cancel = function() {
+            $state.go("productList");
+        }
     }
 
 
