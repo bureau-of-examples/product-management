@@ -13,7 +13,18 @@
         } else {
             vm.title = "New Product";
         }
+
+        vm.isOpen = false;
+
+        vm.open = function($event) {
+            $event.preventDefault();
+            $event.stopPropagation();
+
+            vm.isOpen = !vm.isOpen;
+        };
     }
+
+
 
 }());
 

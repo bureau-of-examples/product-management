@@ -1,1 +1,42 @@
-Product edit info view.
+
+<form name="productForm" class="form-horizontal">
+
+    <fieldset>
+        <legend>Basic Product Information</legend>
+
+        <div class="form-group">
+            <label for="inputProductName" class="col-md-2 control-label">Product Name</label>
+            <div class="col-md-4">
+                <input id="inputProductName" type="text" placeholder="Product Name" data-ng-model="vm.product.productName" class="form-control">
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="inputProductCode" class="col-md-2 control-label">Product Code</label>
+            <div class="col-md-4">
+                <input id="inputProductCode" type="text" data-ng-model="vm.product.productCode" data-ui-mask="AAA-****" class="form-control"/>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="inputAvailabilityDate" class="col-md-2 control-label"></label>
+            <div class="col-md-4">
+                <div class="input-group">
+                    <input id="inputAvailabilityDate" type="text" data-datepicker-popup="MMM dd, yyyy" data-is-open="vm.isOpen" data-ng-model="vm.product.releaseDate" class="form-control">
+                    <span class="input-group-btn">
+                        <button class="btn btn-default" data-ng-click="vm.open($event)">
+                            <i class="glyphicon glyphicon-calendar"></i>
+                        </button>
+                    </span>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="inputProductDescription" class="col-md-2 control-label">Description</label>
+            <div class="col-md-10">
+                <textarea id="inputProductDescription" placeholder="Description" rows="3" data-ng-model="vm.product.description" class="form-control" ></textarea>
+            </div>
+        </div>
+    </fieldset>
+</form>
