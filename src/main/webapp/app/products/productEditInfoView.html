@@ -11,12 +11,17 @@
                 <input id="inputProductName" type="text" placeholder="Product Name (required)"
                        data-ng-model="vm.product.productName"
                        required
+                       data-minlength="4"
+                       data-maxlength="12"
                        name="inputProductName"
                        class="form-control">
             </div>
             <div class="col-md-6">
                 <span class="help-block has-error" data-ng-show="productForm.inputProductName.$invalid && productForm.inputProductName.$dirty">
-                    Product name is required.
+                    <span data-ng-show="productForm.inputProductName.$error.required">Product name is required.</span>
+                    <span data-ng-show="productForm.inputProductName.$error.minlength">Must be at least 4 characters in length.</span>
+                    <span data-ng-show="productForm.inputProductName.$error.maxlength">Cannot exceed 12 characters in length.</span>
+
                 </span>
             </div>
         </div>
