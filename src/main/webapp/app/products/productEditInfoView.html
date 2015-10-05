@@ -5,7 +5,7 @@
         <legend>Basic Product Information</legend>
 
         <div    class="form-group"
-                data-ng-class='{"has-error":productForm.inputProductName.$invalid}'>
+                data-ng-class='{"has-error":productForm.inputProductName.$invalid && productForm.inputProductName.$dirty}'>
             <label for="inputProductName" class="col-md-2 control-label">Product Name</label>
             <div class="col-md-4">
                 <input id="inputProductName" type="text" placeholder="Product Name (required)"
@@ -14,10 +14,15 @@
                        name="inputProductName"
                        class="form-control">
             </div>
+            <div class="col-md-6">
+                <span class="help-block has-error" data-ng-show="productForm.inputProductName.$invalid && productForm.inputProductName.$dirty">
+                    Product name is required.
+                </span>
+            </div>
         </div>
 
         <div    class="form-group"
-                data-ng-class='{"has-error":productForm.inputProductCode.$invalid}'>
+                data-ng-class='{"has-error":productForm.inputProductCode.$invalid && productForm.inputProductCode.$dirty}'>
             <label for="inputProductCode" class="col-md-2 control-label">Product Code</label>
             <div class="col-md-4">
                 <input id="inputProductCode" type="text"
@@ -26,6 +31,11 @@
                        required
                        name="inputProductCode"
                        class="form-control"/>
+            </div>
+            <div class="col-md-6">
+                <span class="help-block has-error" data-ng-show="productForm.inputProductCode.$invalid && productForm.inputProductCode.$dirty">
+                    Product code is required.
+                </span>
             </div>
         </div>
 
