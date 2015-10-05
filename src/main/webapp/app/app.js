@@ -78,7 +78,16 @@
             resolve: {
                 productResource: "productResource",
                 products: ["productResource", function(productResource){
-                    return productResource.query().$promise;
+                    return productResource.query(
+                        function(){},
+                        function(response){
+                            if(response.status == 404) {
+                                alert("Error accessing resource: " + response.config.method + " " + response.config.url);
+                            } else {
+                                alert(response.statusText);
+                            }
+                        }
+                    ).$promise;
                 }]
             }
         });
