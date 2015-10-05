@@ -4,6 +4,19 @@
         "productManagement",
         ["common.services", "ui.router", "ui.mask", "ui.bootstrap", "angularCharts", "productResourceMock"]);
 
+    app.config(["$provide", decorateExceptionHandler]);
+
+    function decorateExceptionHandler($provide){
+        $provide.decorator("$exceptionHandler", ["$delegate", function($delegate){
+
+            return function(exception, cause){
+                exception.message = "Please contact the Help Desk!\n Message:" + exception.message;
+                $delegate(exception, cause);
+                alert(exception.message);
+            };
+        }]);
+    }
+
     app.config(["$stateProvider", "$urlRouterProvider", configureStateProvider]);
 
     function configureStateProvider($stateProvider, $urlRouterProvider){
