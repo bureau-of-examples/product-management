@@ -1,9 +1,9 @@
 (function(){
     "use strict";
 
-    angular.module("productManagement").controller("productEditCtrl", ["product", "$state", "productResource", productEditCtrl]);
+    angular.module("productManagement").controller("productEditCtrl", ["product", "$state", "productResource", "productService", productEditCtrl]);
 
-    function productEditCtrl(product, $state, productResource){
+    function productEditCtrl(product, $state, productResource, productService){
         var vm = this;
 
         vm.product = product;
@@ -54,6 +54,23 @@
             vm.product.tags.splice(idx, 1);
         };
 
+        vm.priceOption="percent";
+
+        vm.marginPercent = function(){
+            return productService.calculateMarginPercent(vm.product.price, vm.product.cost);
+        };
+
+        vm.calculatePrice = function(){
+            var price = 0;
+
+            if(vm.priceOption == "percent"){
+                price = productService.calculatePriceFromPercent(vm.product.cost, vm["markupPercent"]);
+            } else if(vm.priceOption == "amount") {
+                price = productService.calculatePriceFromAmount(vm.product.cost, vm["markupAmount"]);
+            }
+
+            vm.product.price = price;
+        };
 
     }
 

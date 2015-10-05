@@ -1,1 +1,110 @@
-product edit price view
+<form name="productPriceForm" novalidate class="form-horizontal">
+    <fieldset>
+        <legend>Product Price Details</legend>
+        <div class="form-group"
+             data-ng-class='{"has-error":productPriceForm.inputCost.$invalid && productPriceForm.inputCost.$dirty}'>
+            <label for="inputCost" class="col-md-2 control-label">Cost</label>
+
+            <div class="col-md-4">
+                <input id="inputCost" type="number" class="form-control"
+                       name="inputCost" placeholder="Our Cost" data-ng-model="vm.product.cost" style="align:right">
+            </div>
+            <span class="help-block"
+                  data-ng-show="productPriceForm.inputCost.$invalid && productPriceForm.inputCOst.$dirty">Product cost must be a valid number or mepty.</span>
+        </div>
+
+        <div class="form-group" style="margin-bottom:0;">
+            <label for="" class="col-md-2 control-label">Calculate Price</label>
+
+            <div class="col-md-4 btn-group">
+                <label for="" class="btn btn-default" style="width:50%" data-ng-model="vm.priceOption"
+                       data-btn-radio="'percent'">
+                    Markup %
+                </label>
+                <label for="" class="btn btn-default" style="width:50%" data-ng-model="vm.priceOption"
+                       data-btn-radio="'amount'">
+                    Markup $
+                </label>
+            </div>
+        </div>
+
+        <div class="form-group"
+             data-ng-if="vm.priceOption=='percent'"
+             data-ng-class='{"has-error":productPriceForm.inputMarkupPercent.$invalid && productPriceForm.inputMarkupPercent.$dirty}'>
+            <div class="col-md-6 col-md-offset-2">
+                <label for="inputMarkupPercent" class="control-label">Markup Percentage</label>
+
+                <div class="form-group row" style="margin-bottom:0;">
+                    <div class="col-md-4">
+                        <input type="number" data-ng-model="vm.markupPercent" style="text-align:right"
+                               class="form-control" placeholder="Markup %" id="inputMarkupPercent">
+                    </div>
+                    <div class="col-md-2">
+                        <button type="button" data-ng-click="vm.calculatePrice()" class="btn btn-default"
+                                title="Calculate the price based on the cost plus markup percent.">
+                            Calculate
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="form-group"
+             data-ng-if="vm.priceOption=='amount'"
+             data-ng-class='{"has-error":productPriceForm.inputMarkupAmount.$invalid && productPriceForm.inputMarkupAmount.$dirty}'>
+            <div class="col-md-6 col-md-offset-2">
+                <label for="inputMarkupAmount" class="control-label">Markup Amount</label>
+
+                <div class="form-group row" style="margin-bottom:0;">
+                    <div class="col-md-4">
+                        <input type="number" data-ng-model="vm.markupAmount" style="text-align:right"
+                               class="form-control" placeholder="Markup $" id="inputMarkupAmount">
+                    </div>
+                    <div class="col-md-2">
+                        <button type="button" data-ng-click="vm.calculatePrice()" class="btn btn-default"
+                                title="Calculate the price based on the cost plus markup amount.">
+                            Calculate
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="form-group">
+            <label for="inputPrice" class="col-md-2 control-label">Price</label>
+
+            <div class="col-md-4">
+                <input id="inputPrice" type="number" class="form-control" name="inputPrice" placeholder="Price"
+                       required data-ng-model="vm.product.price" style="text-align: right;">
+            </div>
+
+            <span class="help-block"
+                  data-ng-show="productPriceForm.inputPrice.$invalid && productPriceForm.inputPrice.$dirty">Price must be a valid number.</span>
+        </div>
+
+        <div class="row">
+            <div class="col-md-2" style="text-align:right">Margin</div>
+            <div class="col-md-4">{{vm.marginPercent() | number:0}}%</div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-4 col-md-offset-2">
+                <span>
+                    <button type="submit" class="btn btn-primary"
+                            data-ng-disabled="productPriceForm.$invalid"
+                            data-ng-click="vm.submit(productPriceForm.$valid)">
+                        Save
+                    </button>
+                    </span>
+                <span>
+                    <button data-ng-click="vm.cancel()" class="btn btn-default" style="width:70px">
+                        Cancel
+                    </button>
+                    </span>
+            </div>
+        </div>
+
+    </fieldset>
+</form>
