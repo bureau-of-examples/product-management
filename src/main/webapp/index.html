@@ -15,11 +15,11 @@
     <script src="js/angular-mocks.js"></script>
     <script src="js/angular-ui-router.js"></script>
     <script src="js/angular-ui/mask.js"></script>
+    <script src="js/d3.js" ></script>
+    <script src="js/angular-charts.js"></script>
     <script src="js/ui-bootstrap-tpls.js" ></script>
     <script src="js/toastr.js" ></script>
-
     <script src="js/bootstrap.js" ></script>
-
     <script src="app/app.js"></script>
 
     <script src="common/services/common.services.js"></script>
@@ -29,6 +29,7 @@
     <script src="app/products/productDetailCtrl.js"></script>
     <script src="app/products/productEditCtrl.js"></script>
     <script src="common/services/productService.js" ></script>
+    <script src="app/prices/priceAnalyticsCtrl.js" ></script>
 
 </head>
 <body data-ng-app="productManagement">
@@ -48,6 +49,7 @@
           <ul class="nav navbar-nav">
               <li><a data-ui-sref="productList">Product List</a></li>
               <li><a data-ui-sref="productEdit.info({productId:0})"><i class="glyphicon glyphicon-plus"></i>Add Product</a></li>
+              <li><a data-ui-sref="priceAnalytics">Price Analytics</a></li>
           </ul>
       </div>
   </div>

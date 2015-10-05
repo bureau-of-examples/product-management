@@ -1,6 +1,8 @@
 (function () {
     "use strict";
-    var app = angular.module("productManagement", ["common.services", "ui.router", "ui.mask", "ui.bootstrap", "productResourceMock"]);
+    var app = angular.module(
+        "productManagement",
+        ["common.services", "ui.router", "ui.mask", "ui.bootstrap", "angularCharts", "productResourceMock"]);
 
     app.config(["$stateProvider", "$urlRouterProvider", configureStateProvider]);
 
@@ -54,6 +56,18 @@
             templateUrl:"app/products/productDetailView.html",
             controller: "productDetailCtrl as vm",
             resolve: resolveProductById
+        });
+
+        $stateProvider.state("priceAnalytics", {
+            url: "/priceAnalytics",
+            templateUrl: "app/prices/priceAnalyticsView.html",
+            controller: "priceAnalyticsCtrl",
+            resolve: {
+                productResource: "productResource",
+                products: ["productResource", function(productResource){
+                    return productResource.query().$promise;
+                }]
+            }
         });
     }
 
