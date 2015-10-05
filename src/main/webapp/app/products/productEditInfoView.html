@@ -5,7 +5,7 @@
         <legend>Basic Product Information</legend>
 
         <div    class="form-group"
-                data-ng-class='{"has-error":productForm.inputProductName.$invalid && productForm.inputProductName.$dirty}'>
+                data-ng-class='{"has-error":vm.showError || productForm.inputProductName.$invalid && productForm.inputProductName.$dirty}'>
             <label for="inputProductName" class="col-md-2 control-label">Product Name</label>
             <div class="col-md-4">
                 <input id="inputProductName" type="text" placeholder="Product Name (required)"
@@ -17,7 +17,7 @@
                        class="form-control">
             </div>
             <div class="col-md-6">
-                <span class="help-block has-error" data-ng-show="productForm.inputProductName.$invalid && productForm.inputProductName.$dirty">
+                <span class="help-block has-error" data-ng-show="vm.showError || productForm.inputProductName.$invalid && productForm.inputProductName.$dirty">
                     <span data-ng-show="productForm.inputProductName.$error.required">Product name is required.</span>
                     <span data-ng-show="productForm.inputProductName.$error.minlength">Must be at least 4 characters in length.</span>
                     <span data-ng-show="productForm.inputProductName.$error.maxlength">Cannot exceed 12 characters in length.</span>
@@ -27,7 +27,7 @@
         </div>
 
         <div    class="form-group"
-                data-ng-class='{"has-error":productForm.inputProductCode.$invalid && productForm.inputProductCode.$dirty}'>
+                data-ng-class='{"has-error":vm.showError || productForm.inputProductCode.$invalid && productForm.inputProductCode.$dirty}'>
             <label for="inputProductCode" class="col-md-2 control-label">Product Code</label>
             <div class="col-md-4">
                 <input id="inputProductCode" type="text"
@@ -38,8 +38,8 @@
                        class="form-control"/>
             </div>
             <div class="col-md-6">
-                <span class="help-block has-error" data-ng-show="productForm.inputProductCode.$invalid && productForm.inputProductCode.$dirty">
-                    Product code is required.
+                <span class="help-block has-error" data-ng-show="vm.showError || productForm.inputProductCode.$invalid && productForm.inputProductCode.$dirty">
+                   <span data-ng-show="productForm.inputProductCode.$error.required">Product code is required.</span>
                 </span>
             </div>
         </div>
@@ -68,7 +68,7 @@
         <div class="form-group">
             <div class="col-md-4 col-md-offset-2">
                 <span>
-                    <button data-ng-click="vm.submit()" class="btn btn-primary" style="width:80px margin-right:10px;">
+                    <button data-ng-click="vm.submit(productForm.$valid)" class="btn btn-primary" style="width:80px margin-right:10px;">
                         Save
                     </button>
                 </span>

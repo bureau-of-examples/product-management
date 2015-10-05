@@ -23,7 +23,14 @@
             vm.isOpen = !vm.isOpen;
         };
 
-        vm.submit = function() {
+        vm.showError = false;
+
+        vm.submit = function(isValid) {
+            if(!isValid){
+                alert("Please correct the validation errors first.");
+                vm.showError = true;
+                return;
+            }
             productResource.save(vm.product).$promise.then(function(){
                 toastr.success("Save successful.");
             });
